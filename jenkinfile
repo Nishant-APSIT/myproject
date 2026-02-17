@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // This downloads your 'myproject' repository from GitHub
+                git branch: 'master', url: 'https://github.com/Nishant-APSIT/myproject.git'
+            }
+        }
+
+        stage('Display Content') {
+            steps {
+                echo 'Printing the contents of your file:'
+                // Since your file has no .c extension now, we just use the name 'helloworld'
+                sh 'cat helloworld'
+            }
+        }
+    }
+}
